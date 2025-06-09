@@ -1,0 +1,23 @@
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-07 11:58 BST
+Nmap scan report for 20.84.67.45
+Host is up (0.0026s latency).
+Not shown: 998 filtered tcp ports (no-response)
+PORT   STATE SERVICE    VERSION
+22/tcp open  tcpwrapped
+| ssh-hostkey: 
+|   256 a9:6f:95:ff:4d:45:48:7f:59:34:8e:b5:16:e1:10:57 (ECDSA)
+|_  256 c9:99:b3:7b:7a:e8:95:3d:28:15:60:ed:92:4b:0b:25 (ED25519)
+80/tcp open  tcpwrapped
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.58 (Ubuntu)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+OS fingerprint not ideal because: Missing a closed TCP port so results incomplete
+No OS matches for host
+Network Distance: 1 hop
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT     ADDRESS
+1   0.21 ms 20.84.67.45
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 59.23 seconds

@@ -1,0 +1,58 @@
+Task 2: Security configuration review
+Objective: Review SSH settings, firewall rules, user permissions and audit logs
+
+Name:taskvm1
+OS: Ubuntu
+Subscription: AzureSubscription
+Resource group: Technicaltest
+Public IP: 20.84.67.45
+private IP: 10.0.0.4
+
+1. SSH configuration review
+cat /etc/ssh/sshd_config 
+Observations:
+Root login is not enabled
+Password Authentication is not enabled
+Permit empty password is not enabled
+ 
+Review SSH firewall rule: is it restricted? No
+
+Issue:
+Unrestricted SSH access from any source
+
+
+2.FIREWALL RULE review
+azureuser@taskvm1:~$ sudo ufw status (is firewall enabled at the host level?)
+Status: inactive
+All incoming and outgoing traffic is currently allowed, subject only to Azure NSG rules.
+
+Issues
+Your VM is not protected at the OS level from unauthorized access.
+At the NSG level, unrestricted access from any IP on port 22,80,443,3389,8081
+
+
+3. User permissions review and commands
+list users  - cat /etc/passwd
+list user with sudo privileges - getent group sudo
+review authorised keys - cat ~/.ssh/authorized_keys
+list users in Entra ID and review their permission
+
+Issue:
+User with Global Admin role does not have MFA enabled (screenshot attached in the report)
+
+
+4. Audit logs
+Review SSH logs
+sudo grep 'sshd' /var/log/auth.log | tail -n 50
+Review Apache logs
+cat /var/log/apache2/access.logs
+
+Review Azure logs
+activity logs
+Microsoft defender findings
+
+
+
+
+
+

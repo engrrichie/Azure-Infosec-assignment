@@ -1,0 +1,13 @@
+Findings
+----
+- Firewall had broad port access
+- Firewall inactive at the OS level
+- Some users “might have” unnecessary Sudo rights
+- Privileged users do not have MFA enabled
+
+
+## Recommendations
+- Harden firewall rules(SSH, RDP, etc.) at the Azure NSG level
+- Enable and harden firewall at the OS level.
+- Enforce least privilege – only grant Sudo privileges to users that require it.
+- Enforce MFA for privileged users in Azure

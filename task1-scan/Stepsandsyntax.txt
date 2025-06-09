@@ -1,0 +1,55 @@
+1. Create the VM
+Name:taskvm1
+OS: Ubuntu
+Subscription: AzureSubscription
+Resource group: Technicaltest
+Public IP: 20.84.67.45
+private IP: 10.0.0.4
+
+RDP login creds
+username: infosecuser
+password: Techtest123@
+
+2.SSH into the VM 
+- Download the private key
+- Upload the key into the Azure cloud shell - (In prod environment, recommended to use Azure key vault to manage your keys)
+- chmod 400 to give read permission
+- ssh -i <path-to-private-key-file> azureuser@20.84.67.45
+
+
+3. Deploy Apache2 service
+sudo apt update
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+sudo systemctl status  apache2.service - check status of apache2
+
+
+4. Deploy a vulnerable applicable using docker - it is called Damn Vulnerable Web Application (used for testing and education purpose)
+First install docker
+sudo apt update
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+the run the container with the command below(port 80 is already in use, so we use port 8081):
+sudo docker run -d -p 8081:80 vulnerables/web-dvwa
+
+Access DVWA in Browser with the VM IP
+http://<azure-vm-public-ip>
+username:admin
+password: password
+
+5.Nmap scan
+sudo nmap -T4 -sS -sV -A 20.84.67.45 > nmap.txt
+
+
+6.Vulnerability scan with nikto
+nikto -h http://20.84.67.45 -output nikto-dvwa.txt
+
+
+
+
+

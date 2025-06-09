@@ -1,0 +1,17 @@
+# Task 1 – Recon & Vulnerability Assessment
+
+## Overview
+We performed port and vulnerability scans on the Azure-hosted DVWA instance.
+
+## Tools Used
+- nmap for port/service discovery
+- `tenable` for web server vulnerabilities
+- `nikto` for application vulnerability scan
+
+## Key Findings
+- SSH service exposed on port 22 with public key auth - Medium
+- Missing relevant http headers(x-content-type-options, etc) - Low
+
+
+## Screenshots & Outputs
+(Refer to attached `*.txt` files and the vulnerability scan report)
